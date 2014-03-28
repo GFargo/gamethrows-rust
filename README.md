@@ -10,7 +10,7 @@ Official Rust Plugin from GameThrows.com Team.  Features many addon functions to
 	* Malicous Players are sent to the _Jail_ via simple admin command 
 	* __Coming Soon:__
 		* _Player Voting to control jailing of Malicious players_
-* ####Wolf Attack!
+* __Wolf Attack!__
 	* If the Jail doesn't correct you, the Wolves will... 
 
 
