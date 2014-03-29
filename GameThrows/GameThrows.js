@@ -20,12 +20,12 @@ function SecUpdateCallback(){
 
 function getArraySize(array)
 {
-	var size = 0;
-	for (var i in array)
-	{
-		size++;
-	}
-	return size;
+  var size = 0;
+  for (var i in array)
+  {
+    size++;
+  }
+  return size;
 }
 
 /* 
@@ -44,62 +44,62 @@ function getArraySize(array)
 //Griffen 76561197989153725
 function Admin_Auth(SteamID, superFlag, mikeFlag, Player) {
    //Util.ConsoleLog('First Step');
-	if (superFlag == true && mikeFlag == true) {
-		//Super Admins
-		var AdminArray = ["76561197983542681"];
-	}	else if (superFlag == true) {
+  if (superFlag == true && mikeFlag == true) {
+    //Super Admins
+    var AdminArray = ["76561197983542681"];
+  } else if (superFlag == true) {
       var AdminArray = ["76561197983542681","76561197986685988","76561197974340167", "76561197989153725"];
       
    } else {
-		//Admins
-		var AdminArray = ["76561197983542681","76561197986685988","76561197974340167", "76561197989153725", "76561197961690794", "76561198073472773"];
-	}
-	
-	for (var i=0; i < AdminArray.length; i++)
-	{ 
-		if (SteamID == AdminArray[i]) {
-			return true;
-		}
-	}
-	return false;
+    //Admins
+    var AdminArray = ["76561197983542681","76561197986685988","76561197974340167", "76561197989153725", "76561197961690794", "76561198073472773"];
+  }
+  
+  for (var i=0; i < AdminArray.length; i++)
+  { 
+    if (SteamID == AdminArray[i]) {
+      return true;
+    }
+  }
+  return false;
 }
 
 function Admin_WolfAttack(Player, cmd, args) {
-	if (Admin_Auth(Player.SteamID, true) == true) {
-    	    if (getArraySize(args) > 1) {
-    	    	var finalSearchName = "";
-    	    	for (var i=0; i < getArraySize(args); i++)
-				{ 
-					finalSearchName = finalSearchName + ' ' + args[i];
-				}
-				var victim = Magma.Player.FindByName(finalSearchName); // Still not finding
-    	    } else {
-    	    	var victim = Player.Find(args[0]);
-    	    }
+  if (Admin_Auth(Player.SteamID, true) == true) {
+          if (getArraySize(args) > 1) {
+            var finalSearchName = "";
+            for (var i=0; i < getArraySize(args); i++)
+        { 
+          finalSearchName = finalSearchName + ' ' + args[i];
+        }
+        var victim = Magma.Player.FindByName(finalSearchName); // Still not finding
+          } else {
+            var victim = Player.Find(args[0]);
+          }
             Player.Notice('The wolves are going after ' + victim.Name);
 
             //var victim = Player.Find(args[0]);
            
             var locOne = victim.Location;
-			var locTwo = victim.Location;
-			var locThree = victim.Location;
-			var locFour = victim.Location;
+      var locTwo = victim.Location;
+      var locThree = victim.Location;
+      var locFour = victim.Location;
 
-			locOne.x = locOne.x + 5;
-			locTwo.x = locTwo.x - 5;
-			locThree.z = locThree.z + 5;
-			locFour.z = locFour.z - 5;
+      locOne.x = locOne.x + 5;
+      locTwo.x = locTwo.x - 5;
+      locThree.z = locThree.z + 5;
+      locFour.z = locFour.z - 5;
 
 
-			World.Spawn(":wolf_prefab", locOne);
-			World.Spawn(":wolf_prefab", locTwo);
-			World.Spawn(":wolf_prefab", locThree);
-			World.Spawn(":wolf_prefab", locFour);
+      World.Spawn(":wolf_prefab", locOne);
+      World.Spawn(":wolf_prefab", locTwo);
+      World.Spawn(":wolf_prefab", locThree);
+      World.Spawn(":wolf_prefab", locFour);
 
-			victim.Notice('The wolves have been called on you.');
-	} else {
-			Player.Notice('You do not have access to /wolfattack');
-	}	
+      victim.Notice('The wolves have been called on you.');
+  } else {
+      Player.Notice('You do not have access to /wolfattack');
+  } 
 }
 
 
@@ -107,7 +107,7 @@ function Admin_WolfAttack(Player, cmd, args) {
 
 
 function Admin_GoTo(Player, cmd, args) {
-	if (Admin_Auth(Player.SteamID) == true) {
+  if (Admin_Auth(Player.SteamID) == true) {
        var targetName = Get_Name(Player, args);
        Player.Message('TargetName:', targetName);
         if (Get_Name(Player, args) == false) {
@@ -123,14 +123,14 @@ function Admin_GoTo(Player, cmd, args) {
                }
          }
    
-   	} else {
-			Player.Notice('You do not have access to /goto');
-	}		
+    } else {
+      Player.Notice('You do not have access to /goto');
+  }   
 }
 
 
 function Admin_Home(Player, cmd, args) {
-	if (Admin_Auth(Player.SteamID) == true) {
+  if (Admin_Auth(Player.SteamID) == true) {
       switch (args[0])
      {
              case "outside":
@@ -147,8 +147,8 @@ function Admin_Home(Player, cmd, args) {
                      break;
    }
      } else {
-			Player.Notice('You do not have access to /home');
-	}		
+      Player.Notice('You do not have access to /home');
+  }   
 }
 
 function Get_Name(Player, args) {
@@ -185,9 +185,9 @@ function Admin_FollowBuddy(Player, cmd, args) {
             Player.Notice('Player not found.');
         } else {
          if (buddyName == Player.Name) {
-         	 Player.Notice('You can not follow yourself');
+           Player.Notice('You can not follow yourself');
          } else {
- 	         Player.Message(buddyName + ' is now your buddy. Use /where to find his general direction');
+           Player.Message(buddyName + ' is now your buddy. Use /where to find his general direction');
          }
 
         }
@@ -248,7 +248,7 @@ function Admin_Jail(Player, cmd, args) {
                                  
                                  target.TeleportTo('6409', '452', '-4476');
                            } else {
-                           		 //Plugin.CreateTimer("userJailed-" + target.SteamID,10000).Start();
+                               //Plugin.CreateTimer("userJailed-" + target.SteamID,10000).Start();
                                  DataStore.Add("jailed_time", target.SteamID, System.Environment.TickCount);
                                  target.TeleportTo('6410', '445', '-4477');
                            } 
@@ -373,14 +373,14 @@ function Admin_DisplayAdmins(Player, cmd, args) {
 }
 
 function Admin_TestKit(Player, cmd, args) {
-	if (Admin_Auth(Player.SteamID, true, true) == true) {
-		Player.Notice('You have been given a test kit.');
-		//Player.Inventory.AddItem('Wood Shelter', '1');
-		//Player.Inventory.AddItem('Wood Door', '1');
-		Player.Inventory.AddItem('Wood', '2000');
-		Player.Inventory.AddItem('Stone Hatchet', '1');
-		Player.Inventory.AddItem('Cooked Chicken Breast', '3');
-	}
+  if (Admin_Auth(Player.SteamID, true, true) == true) {
+    Player.Notice('You have been given a test kit.');
+    //Player.Inventory.AddItem('Wood Shelter', '1');
+    //Player.Inventory.AddItem('Wood Door', '1');
+    Player.Inventory.AddItem('Wood', '2000');
+    Player.Inventory.AddItem('Stone Hatchet', '1');
+    Player.Inventory.AddItem('Cooked Chicken Breast', '3');
+  }
 }
 
 function Admin_SetLocation(Player, cmd, args) {
@@ -416,19 +416,19 @@ function Admin_GoToPosition(Player, cmd, args) {
 */
 
 function On_Command(Player, cmd, args)
-{	
-		switch (cmd)
-	        {
-	                case "wolfattack":
-                			Admin_WolfAttack(Player, cmd, args);
-	                        break;
+{ 
+    switch (cmd)
+          {
+                  case "wolfattack":
+                      Admin_WolfAttack(Player, cmd, args);
+                          break;
 
-	               	case "home":
-			               	Admin_Home(Player, cmd, args);
-	               			break;  
-	               	case "goto":
-			               	Admin_GoTo(Player, cmd, args);
-	               			break;
+                  case "home":
+                      Admin_Home(Player, cmd, args);
+                      break;  
+                  case "goto":
+                      Admin_GoTo(Player, cmd, args);
+                      break;
                      case "force":
                            Admin_Force(Player, cmd, args);
                            break;
@@ -474,7 +474,7 @@ function On_Command(Player, cmd, args)
                       case "pos":
                            Admin_GoToPosition(Player, cmd, args);
                            break;
-	        }
+          }
 }
 
 function On_DoorUse(Player, DoorEvent) {
@@ -494,43 +494,43 @@ function On_EntityDecay(DecayEvent) {
 }
 
 function On_PlayerHurt(HurtEvent, Ent) {
-	if (Admin_Auth(HurtEvent.Victim.SteamID, true, true) == true) {
-		HurtEvent.DamageAmount = 0; // Godmode
-		HurtEvent.Victim.IsInjured = false; // No Broken Legs
-		HurtEvent.Victim.IsBleeding = false; // Not Bleeding
-		HurtEvent.Victim.Message('You were attacked by ' + HurtEvent.Attacker.Name);
-		HurtEvent.Attacker('Leave nTel alone. He is writing our server plugins.');
-	} 
+  if (Admin_Auth(HurtEvent.Victim.SteamID, true, true) == true) {
+    HurtEvent.DamageAmount = 0; // Godmode
+    HurtEvent.Victim.IsInjured = false; // No Broken Legs
+    HurtEvent.Victim.IsBleeding = false; // Not Bleeding
+    HurtEvent.Victim.Message('You were attacked by ' + HurtEvent.Attacker.Name);
+    HurtEvent.Attacker('Leave nTel alone. He is writing our server plugins.');
+  } 
 }
 
 
 function On_EntityHurt(HurtEvent) {
-	if (Admin_Auth(HurtEvent.Attacker.SteamID, true, true) == true) {	
-		HurtEvent.DamageAmount = 0;
-		HurtEvent.Attacker.Message('ID: ' + HurtEvent.Entity.InstanceID + ' | HP: ' +  HurtEvent.Entity.Health + ' | ' + HurtEvent.Entity.Owner.Name);
+  if (Admin_Auth(HurtEvent.Attacker.SteamID, true, true) == true) { 
+    HurtEvent.DamageAmount = 0;
+    HurtEvent.Attacker.Message('ID: ' + HurtEvent.Entity.InstanceID + ' | HP: ' +  HurtEvent.Entity.Health + ' | ' + HurtEvent.Entity.Owner.Name);
 
-	//	if (DataStore.Get("jail_item", HurtEvent.Entity.InstanceID) == 'true') {
-	//		HurtEvent.Attacker.Message('Already Added This Item');
-	//	} else {
-	//		DataStore.Add("jail_item", HurtEvent.Entity.InstanceID, 'true');
-	//		HurtEvent.Attacker.Message('Item Added to jail_item!');
-	//	}
+  //  if (DataStore.Get("jail_item", HurtEvent.Entity.InstanceID) == 'true') {
+  //    HurtEvent.Attacker.Message('Already Added This Item');
+  //  } else {
+  //    DataStore.Add("jail_item", HurtEvent.Entity.InstanceID, 'true');
+  //    HurtEvent.Attacker.Message('Item Added to jail_item!');
+  //  }
         //DataStore.Get("saveStateZ", Player.SteamID);
         //DataStore.Remove("jailed_time", target.SteamID);
     if (DataStore.Get("jail_item", HurtEvent.Entity.InstanceID) == 'true') {
-		HurtEvent.DamageAmount = 0;
-		//HurtEvent.Attacker.Notice('You can not destroy the jail. Sorry!');
-	}
-		//HurtEvent.Entity.UpdateHealth(HurtEvent.Entity.Health - 100);
-		//HurtEvent.Attacker.Message('You are attacking ' + HurtEvent.Entity.Name + ' [' + HurtEvent.Entity.Health + '] for ' + HurtEvent.DamageAmount + ' damage.');
-		//var goingToDie = HurtEvent.Entity.Health - HurtEvent.DamageAmount;
-		//if (goingToDie < 1) {
-		//	HurtEvent.DamageAmount = 0;
-		//	HurtEvent.Attacker.Notice('You would have killed this Entity.');
-		//}
+    HurtEvent.DamageAmount = 0;
+    //HurtEvent.Attacker.Notice('You can not destroy the jail. Sorry!');
+  }
+    //HurtEvent.Entity.UpdateHealth(HurtEvent.Entity.Health - 100);
+    //HurtEvent.Attacker.Message('You are attacking ' + HurtEvent.Entity.Name + ' [' + HurtEvent.Entity.Health + '] for ' + HurtEvent.DamageAmount + ' damage.');
+    //var goingToDie = HurtEvent.Entity.Health - HurtEvent.DamageAmount;
+    //if (goingToDie < 1) {
+    //  HurtEvent.DamageAmount = 0;
+    //  HurtEvent.Attacker.Notice('You would have killed this Entity.');
+    //}
 
-		//HurtEvent.DamageAmount = 0;
-	} else {
+    //HurtEvent.DamageAmount = 0;
+  } else {
       if (HurtEvent.Entity.Owner.Name) {
         
       } else {
@@ -538,20 +538,20 @@ function On_EntityHurt(HurtEvent) {
          HurtEvent.Attacker.Message('You can not raid while the owner is offline.');
       }
 
-		if (DataStore.Get("jail_item", HurtEvent.Entity.InstanceID) == 'true') {
-		HurtEvent.DamageAmount = 0;
-		HurtEvent.Attacker.Notice('You can not destroy the jail. Sorry!');
-	}
-	}
+    if (DataStore.Get("jail_item", HurtEvent.Entity.InstanceID) == 'true') {
+    HurtEvent.DamageAmount = 0;
+    HurtEvent.Attacker.Notice('You can not destroy the jail. Sorry!');
+  }
+  }
 
-	
+  
 }
 
 
 //JAIL
 
 // -392846
-// -392696	
+// -392696  
 //
 //
 //
@@ -562,19 +562,19 @@ function On_EntityHurt(HurtEvent) {
 
 //function On_EntityHurt(HurtEv) 
 //{
-//	if(HurtEv.Attacker != null && HurtEv.Entity != null)
-//	{
-//		var player = HurtEv.Attacker;
-//		var entity = HurtEv.Entity;
+//  if(HurtEv.Attacker != null && HurtEv.Entity != null)
+//  {
+//    var player = HurtEv.Attacker;
+//    var entity = HurtEv.Entity;
 //
-//		player.Message(player.SteamID);
-//		player.Message(entity.Name);
-//		player.Message(entity.OwnerID);
-//	}
+//    player.Message(player.SteamID);
+//    player.Message(entity.Name);
+//    player.Message(entity.OwnerID);
+//  }
 //}
 
 function On_EntityDeployed(Player, Entity) {
-	//Datastore.Add('entity_owner', Entity.InstanceID, Entity.Owner.SteamID);
+  //Datastore.Add('entity_owner', Entity.InstanceID, Entity.Owner.SteamID);
 }
 
 function On_Console(Player, Arg, Third)
@@ -597,7 +597,7 @@ function On_PlayerConnected(Player){
 function OnPlayerLoaded(Player){
    Player.Message("Howdy Ho " + Player.Name + "! Welcome to the Game of Throws" );
    if (Admin_Auth(Player.SteamID, true) == true) {
-   		Player.Message('Admin in the house.');
+      Player.Message('Admin in the house.');
          Player.SendCommand('rcon.login birdcat');
    }
 }
@@ -605,7 +605,7 @@ function OnPlayerLoaded(Player){
 
 /*
 function On_PlayerGathering(Player, ge) {
-	var percentage = parseInt(ge.PercentFull * 100);
-	Player.Message(percentage + "%");
+  var percentage = parseInt(ge.PercentFull * 100);
+  Player.Message(percentage + "%");
 }
 */
