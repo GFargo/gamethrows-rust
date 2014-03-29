@@ -28,4 +28,6 @@ Official Rust Plugin from GameThrows.com Team.  Features many addon functions to
 			* Families can claim Build Zones
 			* Notifications upon exit and entry of other Families Build Zones
 				
+				
+We are open to all sorts of comments, critique and cirticism - We strive to error towards excellence every day.
 		
