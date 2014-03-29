@@ -1,0 +1,79 @@
+Rcon: 1111526
+Server: 216.155.140.61:28016
+
+net.connect 216.155.140.61:28016
+rcon.login birdcat
+
+Original Base:
+X: 6684 Y: 344 Z: -4418
+teleport.topos "vertiN nTel" "6684" "344" "-4418"
+
+teleport.topos "vertiN nTel" "6686" "356" "-4420"
+
+
+1111526a
+Deacondog02
+
+
+Server:
+216.155.140.61:28016
+net.connect 216.155.140.61:28016
+rcon.login birdcat
+
+1111526a
+Deacondog02
+21
+
+
+
+Functions to remember:
+
+//Get Y axis of Ground via X/Z coords
+World.GetGround(x, z)
+
+On_EntityDeployed
+Datastore.Add('owner', Entity.InstanceID, Entity.Owner.Name);
+
+On_EntityHurt
+var entowner = Datastore.Get("owner", Entity.InstanceID);
+
+
+
+World.Spawn(prefabName, x, y, z);
+;res_woodpile
+;res_ore_1
+;res_ore_2
+;res_ore_3
+
+:stag_prefab
+:boar_prefab
+:chicken_prefab
+:bear_prefab
+:wolf_prefab
+:mutant_bear
+:mutant_wolf
+
+AmmoLootBox
+MedicalLootBox
+BoxLoot
+WeaponLootBox
+SupplyCrate
+
+var loc = victim.Location;
+loc.x = loc.x + 5;
+World.Spawn(":wolf_prefab", loc);
+
+HurtEvent.DamageAmount = 0;
+HurtEvent.Victim.IsBleeding = false;
+HurtEvent.Victim.IsInjured = false;
+
+function On_PlayerHurt(HurtEvent) {
+	if(HurtEvent.Victim.Admin) {
+		HurtEvent.DamageAmount = 0; // Godmode
+		HurtEvent.Victim.IsInjured = false; // No Broken Legs
+		HurtEvent.Victim.IsBleeding = false; // Not Bleeding
+	}
+}
+
+HurtEvent.Victim.Health = 99;
+HurtEvent.Victim.UpdateHealth();
