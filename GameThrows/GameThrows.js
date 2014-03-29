@@ -46,7 +46,7 @@ function Admin_Auth(SteamID, superFlag, mikeFlag, Player) {
    //Util.ConsoleLog('First Step');
   if (superFlag == true && mikeFlag == true) {
     //Super Admins
-    var AdminArray = ["76561197983542681"];
+    var AdminArray = ["76561197983542681", "76561197989153725"];
   } else if (superFlag == true) {
       var AdminArray = ["76561197983542681","76561197986685988","76561197974340167", "76561197989153725"];
       
