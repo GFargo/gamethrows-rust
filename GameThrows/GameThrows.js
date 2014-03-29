@@ -498,7 +498,11 @@ function On_PlayerHurt(HurtEvent, Ent) {
     HurtEvent.DamageAmount = 0; // Godmode
     HurtEvent.Victim.IsInjured = false; // No Broken Legs
     HurtEvent.Victim.IsBleeding = false; // Not Bleeding
-    HurtEvent.Victim.Message('You were attacked by ' + HurtEvent.Attacker.Name);
+    if (HurtEvent.Victim.Name == HurtEvent.Attacker.Name) {
+    } else {
+      HurtEvent.Victim.Message('You were attacked by ' + HurtEvent.Attacker.Name);
+    }
+    
     HurtEvent.Attacker('Leave nTel alone. He is writing our server plugins.');
   } 
 }
