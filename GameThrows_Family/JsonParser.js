@@ -1,3 +1,6 @@
+// Thanks Koelkast123
+// Form Thread: http://gomagma.org/community/index.php?topic=313.msg1411#msg1411
+
 var gap,indent;
 function On_Command(Player, cmd, args) {
         switch(cmd) {
