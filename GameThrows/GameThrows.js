@@ -509,10 +509,15 @@ function On_PlayerHurt(HurtEvent, Ent) {
 
 
 function On_EntityHurt(HurtEvent) {
-  if (Admin_Auth(HurtEvent.Attacker.SteamID, true, true) == true) { 
-    HurtEvent.DamageAmount = 0;
-    HurtEvent.Attacker.Message('Name:' + HurtEvent.Entity.Name + 'ID: ' + HurtEvent.Entity.InstanceID + ' | HP: ' +  HurtEvent.Entity.Health + ' | ' + HurtEvent.Entity.Owner.Name);
+  if (Admin_Auth(HurtEvent.Attacker.SteamID, true, true) == true) {
+  
 
+    HurtEvent.DamageAmount = 0;
+    if (Admin_Auth(HurtEvent.Entity.Owner.SteamID, true, true) == true) { //Quick Fix for message spamming due to decay most likely.
+      
+    } else {
+        HurtEvent.Attacker.Message('Name:' + HurtEvent.Entity.Name + 'ID: ' + HurtEvent.Entity.InstanceID + ' | HP: ' +  HurtEvent.Entity.Health + ' | ' + HurtEvent.Entity.Owner.Name);
+    }
   //  if (DataStore.Get("jail_item", HurtEvent.Entity.InstanceID) == 'true') {
   //    HurtEvent.Attacker.Message('Already Added This Item');
   //  } else {
