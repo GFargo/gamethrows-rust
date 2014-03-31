@@ -58,7 +58,7 @@ function Admin_Auth(SteamID, superFlag, mikeFlag, Player) {
   for (var i=0; i < AdminArray.length; i++)
   { 
     if (SteamID == AdminArray[i]) {
-      return true;
+      return true;  
     }
   }
   return false;
@@ -511,7 +511,7 @@ function On_PlayerHurt(HurtEvent, Ent) {
 function On_EntityHurt(HurtEvent) {
   if (Admin_Auth(HurtEvent.Attacker.SteamID, true, true) == true) { 
     HurtEvent.DamageAmount = 0;
-    HurtEvent.Attacker.Message('ID: ' + HurtEvent.Entity.InstanceID + ' | HP: ' +  HurtEvent.Entity.Health + ' | ' + HurtEvent.Entity.Owner.Name);
+    HurtEvent.Attacker.Message('Name:' + HurtEvent.Entity.Name + 'ID: ' + HurtEvent.Entity.InstanceID + ' | HP: ' +  HurtEvent.Entity.Health + ' | ' + HurtEvent.Entity.Owner.Name);
 
   //  if (DataStore.Get("jail_item", HurtEvent.Entity.InstanceID) == 'true') {
   //    HurtEvent.Attacker.Message('Already Added This Item');
