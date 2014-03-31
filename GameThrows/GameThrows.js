@@ -478,7 +478,7 @@ function On_Command(Player, cmd, args)
 }
 
 function On_DoorUse(Player, DoorEvent) {
-   if (Admin_Auth(HurtEvent.Victim.SteamID, true, true) == true) {
+   if (Admin_Auth(HurtEvent.Attacker.SteamID, true, true) == true) {
       Player.Message('Door Use');
       DoorEvent.Open(true);
    }
