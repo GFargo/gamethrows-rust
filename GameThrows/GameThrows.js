@@ -479,8 +479,9 @@ function On_Command(Player, cmd, args)
 
 function On_DoorUse(Player, DoorEvent) {
    if (Admin_Auth(Player.SteamID, true, true) == true) {
-      Player.Message('Door Use');
-      DoorEvent.Open(true);
+      Player.Message('[' + DoorEvent.Entity.Owner.Name + '] Door Opened.');
+      DoorEvent.Open = true;
+      return;
    }
 }
 
