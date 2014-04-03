@@ -372,6 +372,27 @@ function Admin_DisplayAdmins(Player, cmd, args) {
 
 }
 
+
+function Admin_FuckYou(Player, cmd, args) {
+  if (Admin_Auth(Player.SteamID, true) == true) {
+    Player.Notice('You have been given a Fuck You Kit.');
+    //Player.Inventory.AddItem('Wood Shelter', '1');
+    //Player.Inventory.AddItem('Wood Door', '1');
+    Player.Inventory.AddItem('MP5A4', '1');
+    Player.Inventory.AddItem('Holo sight', '1');
+    Player.Inventory.AddItem('Flashlight Mod', '1');
+    Player.Inventory.AddItem('Silencer', '1');
+    Player.Inventory.AddItem('Laser Sight', '1');
+    Player.Inventory.AddItem('Kevlar Helmet', '1');
+    Player.Inventory.AddItem('Kevlar Vest', '1');
+    Player.Inventory.AddItem('Kevlar Pants', '1');
+    Player.Inventory.AddItem('Kevlar Boots', '1');
+    Player.Inventory.AddItem('9mm Ammo', '2000');
+    
+  }
+}
+
+
 function Admin_TestKit(Player, cmd, args) {
   if (Admin_Auth(Player.SteamID, true, true) == true) {
     Player.Notice('You have been given a test kit.');
@@ -464,7 +485,11 @@ function On_Command(Player, cmd, args)
                            break;
                       case "testkit":
                            Admin_TestKit(Player, cmd, args);
+                      case "fuckyoukit":
+                           Admin_FuckYou(Player, cmd, args);
                            break;
+                      case "destroyinv":
+                            Admin_DestroyInv(Player, cmd, args)
                       case "setloc":
                            Admin_SetLocation(Player, cmd, args);
                            break;
