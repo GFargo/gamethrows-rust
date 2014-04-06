@@ -17,6 +17,29 @@ function getArraySize(array)
   return size;
 }
 
+
+
+/*
+  
+  Accessing Config File Variables
+  
+
+var text = Data.GetConfigValue("nanny", "Main", "disallow0");
+
+var textArray = [];
+var count = 0;
+while(true) {
+        var text = Data.GetConfigValue("nanny", "Main", "disallow" + count);
+  if(text != null) {
+    textArray[count] = text;
+    count++;
+  } else {
+    break;
+  }
+}
+
+*/
+
 /* 
    _      ___         _____    __     ___           __  ___  __________  ___    __  __    
   /_\    /   \/\/\    \_   \/\ \ \   / __\/\ /\  /\ \ \/ __\/__   \_   \/___\/\ \ \/ _\   
@@ -90,7 +113,6 @@ function Admin_WolfAttack(Player, cmd, args) {
       Player.Notice('You do not have access to /wolfattack');
   } 
 }
-
 
 
 
